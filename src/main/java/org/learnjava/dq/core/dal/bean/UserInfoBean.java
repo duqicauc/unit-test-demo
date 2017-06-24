@@ -1,4 +1,4 @@
-package org.learnjava.dq.dal.bean;
+package org.learnjava.dq.core.dal.bean;
 
 import java.util.Date;
 
@@ -21,7 +21,7 @@ public class UserInfoBean {
 
     private Long id;
     private Long userId;
-    private String name;
+    private String nickname;
     private String mobile;
     private Integer sex;
     private Date updateTime;

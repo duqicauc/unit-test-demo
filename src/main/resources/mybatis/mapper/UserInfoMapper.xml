@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.learnjava.dq.core.dal.dao.UserInfoDAO">
+    <resultMap id="userInfoBeanResultMap" type="UserInfoBean">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="nickname" column="nickname"/>
+        <result property="mobile" column="mobile"/>
+        <result property="sex" column="sex"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="saveUserInfoBean" parameterType="UserInfoBean" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user_info(user_id, nickname, mobile, sex, update_time, create_time)
+        VALUES(#{userId}, #{nickname}, #{mobile}, #{sex}, #{updateTime}, #{createTime})
+    </insert>
+
+    <update id="updateUserInfoBean" parameterType="UserInfoBean">
+        UPDATE user_info
+        <set>
+            <if test="nickname!=null">nickname=#{nickname},</if>
+            <if test="mobile!=null">mobile=#{mobile},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            update_time=#{updateTime}
+        </set>
+        WHERE user_id=#{userId}
+    </update>
+
+    <select id="getUserInfoBeanByUserId" resultMap="userInfoBeanResultMap">
+        SELECT user_id,nickname, mobile, sex, update_time, create_time
+        FROM user_info
+        WHERE user_id=#{userId}
+    </select>
+
+    <select id="getUserInfoBeanByMobile" resultMap="userInfoBeanResultMap">
+        SELECT user_id,nickname, mobile, sex, update_time, create_time
+        FROM user_info
+        WHERE mobile=#{mobile}
+    </select>
+
+    <select id="listUserInfoBeanByUserIds" resultMap="userInfoBeanResultMap">
+        SELECT user_id,nickname, mobile, sex, update_time, create_time
+        FROM user_info
+        WHERE user_id IN
+        <foreach collection="userIds" index="index" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <delete id="removeUserInfoBeanByUserId">
+        DELETE FROM user_info
+        WHERE user_id=#{userId}
+    </delete>
+
+
+
+
+</mapper>

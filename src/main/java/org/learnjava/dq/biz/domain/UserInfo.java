@@ -1,4 +1,4 @@
-package org.learnjava.dq.domain;
+package org.learnjava.dq.biz.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

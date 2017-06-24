@@ -1,7 +1,7 @@
-package org.learnjava.dq.dal.dao;
+package org.learnjava.dq.core.dal.dao;
 
 import org.apache.ibatis.annotations.Param;
-import org.learnjava.dq.dal.bean.UserInfoBean;
+import org.learnjava.dq.core.dal.bean.UserInfoBean;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

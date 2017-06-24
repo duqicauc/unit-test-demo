@@ -1,6 +1,6 @@
-package org.learnjava.dq.manager;
+package org.learnjava.dq.biz.manager;
 
-import org.learnjava.dq.domain.UserInfo;
+import org.learnjava.dq.biz.domain.UserInfo;
 
 import java.util.List;
 
